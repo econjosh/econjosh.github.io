@@ -1,2 +1,2 @@
-# tyleransom.github.io
-Repository for Tyler Ransom's academic research website.
+# econjosh.github.io
+Repository for Josh Ding's academic research website.
