@@ -22,45 +22,151 @@
       ga('send', 'pageview');
     </script>
 
-    <!-- For all browsers -->
     <link rel="stylesheet" href="assets/css/academicons.min.css"/>
     <link rel="stylesheet" href="assets/css/academicons.css"/>
     
     <style>
       button.accordion {
-      font:14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
-      cursor: pointer;
-      padding: 0px;
-      border: none;
-      text-align: left;
-      outline: none;
-      font-size: 100%;
-      transition: 0.3s;
-      background-color: #f8f8f8;
+        font:14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        cursor: pointer;
+        padding: 0px;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 100%;
+        transition: 0.3s;
+        background-color: #f8f8f8;
       }
       button.accordion.active, button.accordion:hover {
-      background-color: #f8f8f8;
+        background-color: #f8f8f8;
       }
       button.accordion:after {
-      content: " [+] ";
-      font-size: 90%;
-      color:#777;
-      float: left;
-      margin-left: 1px;
+        content: " [+] ";
+        font-size: 90%;
+        color:#777;
+        float: left;
+        margin-left: 1px;
       }
-
       button.accordion.active:after {
-      content: " [\2212] ";
+        content: " [\2212] ";
       }
       div.panel {
-      padding: 0 20px;
-      margin-top: 5px;
-      display: none;
-      background-color: white;
-      font-size: 100%;
+        padding: 0 20px;
+        margin-top: 5px;
+        display: none;
+        background-color: white;
+        font-size: 100%;
       }
       div.panel.show {
-      display: block !important;
+        display: block !important;
+      }
+
+      /* ── Dark mode CSS variables ── */
+      body.dark-mode {
+        background-color: #1a1a2e !important;
+        color: #e0e0e0 !important;
+      }
+      body.dark-mode .wrapper header {
+        background-color: #16213e !important;
+        border-color: #2a2a4a !important;
+        color: #e0e0e0 !important;
+      }
+      body.dark-mode .wrapper header h1,
+      body.dark-mode .wrapper header h3,
+      body.dark-mode .wrapper header p {
+        color: #e0e0e0 !important;
+      }
+      body.dark-mode .wrapper header a {
+        color: #7eb8f7 !important;
+      }
+      body.dark-mode .wrapper header a:hover {
+        color: #aad4ff !important;
+      }
+      body.dark-mode .wrapper section {
+        background-color: #1a1a2e !important;
+        color: #e0e0e0 !important;
+        border-color: #2a2a4a !important;
+      }
+      body.dark-mode .wrapper section a {
+        color: #7eb8f7 !important;
+      }
+      body.dark-mode .wrapper section h2 {
+        color: #e0e0e0 !important;
+      }
+      body.dark-mode button.accordion {
+        background-color: #2a2a4a !important;
+        color: #e0e0e0 !important;
+      }
+      body.dark-mode button.accordion.active,
+      body.dark-mode button.accordion:hover {
+        background-color: #2a2a4a !important;
+      }
+      body.dark-mode div.panel {
+        background-color: #22223a !important;
+        color: #bbb !important;
+      }
+      body.dark-mode .wrapper footer {
+        background-color: #16213e !important;
+        border-color: #2a2a4a !important;
+        color: #999 !important;
+      }
+      body.dark-mode .wrapper footer a {
+        color: #7eb8f7 !important;
+      }
+
+      /* ── Toggle switch ── */
+      .dark-mode-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 12px 0 4px 0;
+        font-size: 13px;
+        color: inherit;
+      }
+      .toggle-label {
+        font-size: 13px;
+        user-select: none;
+        color: inherit;
+      }
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 42px;
+        height: 22px;
+        flex-shrink: 0;
+      }
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background-color: #ccc;
+        border-radius: 22px;
+        transition: background-color 0.3s;
+      }
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 16px;
+        width: 16px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        border-radius: 50%;
+        transition: transform 0.3s;
+      }
+      input:checked + .slider {
+        background-color: #3a6fbf;
+      }
+      input:checked + .slider:before {
+        transform: translateX(20px);
+      }
+      .toggle-icon {
+        font-size: 14px;
       }
     </style>
   </head>
@@ -68,104 +174,118 @@
     <div class="wrapper">
       <header>
         <h1>Ziran (Josh) Ding</h1>
-            <p><a href="https://www.st-andrews.ac.uk/business-school/"> Lecturer/Assistant Professor <br> Department of Economics <br> University of St Andrews Business School</p>
-       <h3><p class="view"><a href="https://econjosh.github.io/">Home</a></p></h3>
-       <h3><p class="view"><a href="https://econjosh.github.io/research.html">Research</a></p></h3>
-       <h3><p class="view"><a href="https://econjosh.github.io/teaching.html">Teaching</a></p></h3> 
-       <h3><p class="view"><a href="https://econjosh.github.io/research/cv_short.pdf">CV</a></p></h3>  
-    <p class="view"><b>Social</b><br>
-        <a href="mailto:josh.ding@st-andrews.ac.uk" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i> Email</a><br>
-        <a href="http://twitter.com/econjosh" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a><br>
- 
-    <p><b>Contact:</b><br>University of St Andrews Business School<br>The Gateway, North Haugh<br>St Andrews, KY16 9RJ</p>
+        <p><a href="https://www.st-andrews.ac.uk/business-school/">Lecturer/Assistant Professor <br> Department of Economics <br> University of St Andrews Business School</a></p>
+        <h3><p class="view"><a href="https://econjosh.github.io/">Home</a></p></h3>
+        <h3><p class="view"><a href="https://econjosh.github.io/research.html">Research</a></p></h3>
+        <h3><p class="view"><a href="https://econjosh.github.io/teaching.html">Teaching</a></p></h3>
+        <h3><p class="view"><a href="https://econjosh.github.io/research/cv_short.pdf">CV</a></p></h3>
+        <p class="view"><b>Social</b><br>
+          <a href="mailto:josh.ding@st-andrews.ac.uk" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i> Email</a><br>
+          <a href="http://twitter.com/econjosh" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a><br>
+        </p>
+        <p><b>Contact:</b><br>University of St Andrews Business School<br>The Gateway, North Haugh<br>St Andrews, KY16 9RJ</p>
+
+        <!-- Dark mode toggle -->
+        <div class="dark-mode-toggle">
+          <span class="toggle-icon">☀️</span>
+          <label class="switch" title="Toggle dark mode">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider"></span>
+          </label>
+          <span class="toggle-icon">🌙</span>
+          <span class="toggle-label" id="toggleLabel">Light</span>
+        </div>
       </header>
+
       <section>
 
     <h2><a id="Publications" class="anchor" href="#publication" aria-hidden="true"><span class="octicon octicon-link"></span></a>Publications</h2>
     
-    <p style="margin:0;" }><p > <a style="margin:0; font-size:100%; font-weight:bold" href="https://doi.org/10.1016/j.euroecorev.2026.105296"> Dynamic Effects of Industrial Policies Amidst Geoeconomic Tensions </a><br> <i> joint with <a href="https://www.adamhalspencer.com/">Adam Hal Spencer</a>, and <a href="https://sites.google.com/view/zinanwang">Zinan Wang </a>  </i>  <br> <i> <b>European Economic Review</b></i>, 185, 105296 (2026)  </a> <br> 
-    Media: <a href="https://www.parisschoolofeconomics.eu/en/news/the-january-newsletter-is-now-available/">[PSE Newsletter]</a>, <a href="https://www.suerf.org/publications/suerf-policy-notes-and-briefs/dynamic-effects-of-industrial-policies-amidst-geoeconomic-tensions/">[SUERF Policy Brief No. 1372]</a> </a> 
+    <p style="margin:0;"><p> <a style="margin:0; font-size:100%; font-weight:bold" href="https://doi.org/10.1016/j.euroecorev.2026.105296"> Dynamic Effects of Industrial Policies Amidst Geoeconomic Tensions </a><br> <i> joint with <a href="https://www.adamhalspencer.com/">Adam Hal Spencer</a>, and <a href="https://sites.google.com/view/zinanwang">Zinan Wang</a> </i> <br> <i><b>European Economic Review</b></i>, 185, 105296 (2026) <br> 
+    Media: <a href="https://www.parisschoolofeconomics.eu/en/news/the-january-newsletter-is-now-available/">[PSE Newsletter]</a>, <a href="https://www.suerf.org/publications/suerf-policy-notes-and-briefs/dynamic-effects-of-industrial-policies-amidst-geoeconomic-tensions/">[SUERF Policy Brief No. 1372]</a></p>
 
-    <p style="margin:0;" }><p > <a style="margin:0; font-size:100%; font-weight:bold" href="https://onlinelibrary.wiley.com/doi/10.1111/ecot.12427">The Dynamics of Product and Labor Market Power: Evidence from Lithuania</a> <br> </a> <i> joint with <a href="https://sites.google.com/view/garcialouzao/home?authuser=0">Jose Garcia-Louzao</a>, and <a href="https://sites.google.com/site/valentinjouvanceau/homepage/">Valentin Jouvanceau </a>  </i> <br> <i> <b>The Economics of Transition and Institutional Change</b>, 33(1), 165-194 (2025) </i></a> <br>   
-     Media: <a href="https://cepr.org/voxeu/columns/dissecting-firms-market-power-eu-accession-evidence-lithuania">VoxEU Column</a>
+    <p style="margin:0;"><p> <a style="margin:0; font-size:100%; font-weight:bold" href="https://onlinelibrary.wiley.com/doi/10.1111/ecot.12427">The Dynamics of Product and Labor Market Power: Evidence from Lithuania</a> <br> <i> joint with <a href="https://sites.google.com/view/garcialouzao/home?authuser=0">Jose Garcia-Louzao</a>, and <a href="https://sites.google.com/site/valentinjouvanceau/homepage/">Valentin Jouvanceau</a> </i> <br> <i><b>The Economics of Transition and Institutional Change</b>, 33(1), 165-194 (2025)</i> <br>
+    Media: <a href="https://cepr.org/voxeu/columns/dissecting-firms-market-power-eu-accession-evidence-lithuania">VoxEU Column</a></p>
           
-    <p style="margin:0;" }><p > <a style="margin:0; font-size:100%; font-weight:bold" href=" https://doi.org/10.1111/joes.12486">Firm Heterogeneity, Variable Markups, and Multinational Production: A Review from Trade Policy Perspective</a> <br> <i> <b>Journal of Economic Surveys</b> 36(5), 1311-1357 (2022) </i> </a> <br>    
-
+    <p style="margin:0;"><p> <a style="margin:0; font-size:100%; font-weight:bold" href="https://doi.org/10.1111/joes.12486">Firm Heterogeneity, Variable Markups, and Multinational Production: A Review from Trade Policy Perspective</a> <br> <i><b>Journal of Economic Surveys</b> 36(5), 1311-1357 (2022)</i></p>
 
     <hr>    
         
     <h2><a id="workingpapers" class="anchor" href="#workingpapers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Working Papers</h2>
 
-      
-    <p style="margin:0;" }><p > <a style="margin:0; font-size:100%; font-weight:bold" href="https://econjosh.github.io/research/paper8.pdf"> Industrial Policy Wars and Inequality: Who Loses and When? </a><br> <i> joint with <a href="https://www.adamhalspencer.com/">Adam Hal Spencer</a>, and <a href="https://sites.google.com/view/zinanwang">Zinan Wang</a>, <a href="https://econjosh.github.io/research/paper8_slides.pdf"> Slides</i></a><br> <button class="accordion"> 
-    Abstract   
-    </button>   
-    </p> 
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">How does an industrial policy war affect worker inequality? How does this effect change over time? We develop a model to study how industrial policy affects the dynamics of the joint distribution of firms and workers, in the open economy. The model features two skill classes of workers, in addition to multiple sectors with varying skill intensities in production. Heterogeneous firms make decisions to offshore their production of inputs, in addition to export participation. Different industrial policy shocks generate alternative transmission channels in the model; after interacting with the dynamic decisions of firms and households, they can alter a country's comparative advantage over time. While most industrial policies can serve to benefit the locally protected skill class of workers, these effects may take time to eventuate. Similarly, the costs these policy actions impose on the non-protected worker class may diminish over time.   </div></p>
+    <p style="margin:0;"><p> <a style="margin:0; font-size:100%; font-weight:bold" href="https://econjosh.github.io/research/paper8.pdf"> Industrial Policy Wars and Inequality: Who Loses and When? </a><br> <i> joint with <a href="https://www.adamhalspencer.com/">Adam Hal Spencer</a>, and <a href="https://sites.google.com/view/zinanwang">Zinan Wang</a>, <a href="https://econjosh.github.io/research/paper8_slides.pdf">Slides</a></i><br>
+    <button class="accordion">Abstract</button></p>
+    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">How does an industrial policy war affect worker inequality? How does this effect change over time? We develop a model to study how industrial policy affects the dynamics of the joint distribution of firms and workers, in the open economy. The model features two skill classes of workers, in addition to multiple sectors with varying skill intensities in production. Heterogeneous firms make decisions to offshore their production of inputs, in addition to export participation. Different industrial policy shocks generate alternative transmission channels in the model; after interacting with the dynamic decisions of firms and households, they can alter a country's comparative advantage over time. While most industrial policies can serve to benefit the locally protected skill class of workers, these effects may take time to eventuate. Similarly, the costs these policy actions impose on the non-protected worker class may diminish over time.</div>
 
-    <p style="margin:0;" }><p > <a style="margin:0; font-size:100%; font-weight:bold" href="https://econjosh.github.io/research/paper7.pdf">The Heterogeneous Impact of Firm Upgrading on Energy Intensity</a><br> <i> joint with <a href="https://www.business-school.ed.ac.uk/staff/mustapha-douch">Mustapha Douch</a>, and <a href="https://www.lastauskas.com/">Povilas Lastauskas</a>  </i> </a> <br> <i> Available as <a href="https://www.imf.org/en/Publications/WP/Issues/2024/12/06/The-Heterogeneous-Impacts-of-Firm-Upgrading-on-Energy-Intensity-557513">IMF Working Paper 2024/248 </i></a>  <br> Media: <a href="https://cepr.org/voxeu/columns/heterogeneous-firm-upgrading-and-energy-intensity">VoxEU Column</a> </a> <br>   <button class="accordion"> 
-    Abstract   
-    </button>   
-    </p> 
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;"> This paper examines how export activity impacts a firm's energy intensity, emphasizing the upgrading process. We introduce a firm-level complexity index incorporating two dimensions: the complexity of the traded goods and market destinations. We show that growth in external demand incentivizes firms to undertake upgrading activities, resulting in lower energy intensity. However, financial constraints diminish the energy efficiency gains from upgrading, especially for small firms. Additionally, upgraded firms can leverage higher markups, but this is effective only for larger firms. The findings suggest targeted support for small firms and underscore the necessity of open trade in a fragmented global landscape. </div></p>
-  
-  
-    <p style="margin:0;" }><p > <a style="margin:0; font-size:100%; font-weight:bold" href="https://econjosh.github.io/research/paper5.pdf">Mergers and Acquisitions Over the Cycle-An Empirical Investigation</a> <br> <i> joint with <a href="https://benhemingway.github.io/">Benjamin Hemingway </i> </a> <br>  <i> Available as <a href="https://www.lb.lt/uploads/publications/docs/43920_6baa1a4d1d11e74f1bf845e3caf54ff9.pdf">Bank of Lithuania DP No. 35 </i> </a> <br> <button class="accordion"> 
-    Abstract   
-    </button>   
-    </p> 
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">Using US firm-level data from 1985-2019, this paper investigates how the characteristics of matches between acquirers and targets of mergers and acquisitions (M&A) vary over the business cycle. We document several findings. (1) Acquirers are on average larger, more profitable, and in a stronger financial position than targets. (2) Targets are more innovative than acquirers, and (3) M&A targets during a recession have worse financial health but higher levels of innovation compared to M&A targets in booms. Our empirical evidence suggests that an economy may benefit from an economy may benefit from adjusting its antitrust stance over the business cycle. </div></p>
-  
-    <p style="margin:0;" }><p > <a style="margin:0; font-size:100%; font-weight:bold" href="https://econjosh.github.io/research/paper3.pdf">Optimal Tariff with Firm Heterogeneity, Variable Markups, and FDI</a> <br> <i> Available as <a href="https://www.lb.lt/uploads/publications/docs/34284_aab9e8c129777ad29073589a12a88094.pdf">Bank of Lithuania WP No. 99 </i> </a> <br> <button class="accordion"> 
-    Abstract   
-    </button>   
-    </p> 
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;"> Variable markups and multinational production have gathered considerable attention in the trade literature because of their empirical prevalence and welfare implications. This paper studies the welfare implication of tariffs and optimal tariffs in an environment that features firm heterogeneity, variable markups, and FDI. I find: (i) Tariffs endogenously affect firm entry level, producing different comparative statics in the short-run versus long-run. (ii) Variable markups generate multiple externalities in this economy, causing market outcome to differ from the socially optimum outcome systematically. Permitting tariff-jumping FDI can lower the domestic cutoff levels and reduces the misallocation in the economy. (iii) Free trade is not always socially optimal. If the domestic marginal cost cutoff is sufficiently high, a positive tariff can be welfare-improving since it encourages firm entry. The Nash equilibrium tariff level will also be higher than the socially optimal tariff. (iv) The interaction of variable markup and FDI generates novel welfare implications that are absent if consumers possess CES preference. </div></p>
+    <p style="margin:0;"><p> <a style="margin:0; font-size:100%; font-weight:bold" href="https://econjosh.github.io/research/paper7.pdf">The Heterogeneous Impact of Firm Upgrading on Energy Intensity</a><br> <i> joint with <a href="https://www.business-school.ed.ac.uk/staff/mustapha-douch">Mustapha Douch</a>, and <a href="https://www.lastauskas.com/">Povilas Lastauskas</a></i> <br> <i>Available as <a href="https://www.imf.org/en/Publications/WP/Issues/2024/12/06/The-Heterogeneous-Impacts-of-Firm-Upgrading-on-Energy-Intensity-557513">IMF Working Paper 2024/248</a></i> <br>
+    Media: <a href="https://cepr.org/voxeu/columns/heterogeneous-firm-upgrading-and-energy-intensity">VoxEU Column</a> <br>
+    <button class="accordion">Abstract</button></p>
+    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">This paper examines how export activity impacts a firm's energy intensity, emphasizing the upgrading process. We introduce a firm-level complexity index incorporating two dimensions: the complexity of the traded goods and market destinations. We show that growth in external demand incentivizes firms to undertake upgrading activities, resulting in lower energy intensity. However, financial constraints diminish the energy efficiency gains from upgrading, especially for small firms. Additionally, upgraded firms can leverage higher markups, but this is effective only for larger firms. The findings suggest targeted support for small firms and underscore the necessity of open trade in a fragmented global landscape.</div>
 
-          
+    <p style="margin:0;"><p> <a style="margin:0; font-size:100%; font-weight:bold" href="https://econjosh.github.io/research/paper5.pdf">Mergers and Acquisitions Over the Cycle-An Empirical Investigation</a> <br> <i> joint with <a href="https://benhemingway.github.io/">Benjamin Hemingway</a></i> <br> <i>Available as <a href="https://www.lb.lt/uploads/publications/docs/43920_6baa1a4d1d11e74f1bf845e3caf54ff9.pdf">Bank of Lithuania DP No. 35</a></i> <br>
+    <button class="accordion">Abstract</button></p>
+    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">Using US firm-level data from 1985-2019, this paper investigates how the characteristics of matches between acquirers and targets of mergers and acquisitions (M&A) vary over the business cycle. We document several findings. (1) Acquirers are on average larger, more profitable, and in a stronger financial position than targets. (2) Targets are more innovative than acquirers, and (3) M&A targets during a recession have worse financial health but higher levels of innovation compared to M&A targets in booms. Our empirical evidence suggests that an economy may benefit from adjusting its antitrust stance over the business cycle.</div>
+
+    <p style="margin:0;"><p> <a style="margin:0; font-size:100%; font-weight:bold" href="https://econjosh.github.io/research/paper3.pdf">Optimal Tariff with Firm Heterogeneity, Variable Markups, and FDI</a> <br> <i>Available as <a href="https://www.lb.lt/uploads/publications/docs/34284_aab9e8c129777ad29073589a12a88094.pdf">Bank of Lithuania WP No. 99</a></i> <br>
+    <button class="accordion">Abstract</button></p>
+    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;">Variable markups and multinational production have gathered considerable attention in the trade literature because of their empirical prevalence and welfare implications. This paper studies the welfare implication of tariffs and optimal tariffs in an environment that features firm heterogeneity, variable markups, and FDI. I find: (i) Tariffs endogenously affect firm entry level, producing different comparative statics in the short-run versus long-run. (ii) Variable markups generate multiple externalities in this economy, causing market outcome to differ from the socially optimum outcome systematically. Permitting tariff-jumping FDI can lower the domestic cutoff levels and reduces the misallocation in the economy. (iii) Free trade is not always socially optimal. If the domestic marginal cost cutoff is sufficiently high, a positive tariff can be welfare-improving since it encourages firm entry. The Nash equilibrium tariff level will also be higher than the socially optimal tariff. (iv) The interaction of variable markup and FDI generates novel welfare implications that are absent if consumers possess CES preference.</div>
+
     <hr>
   
     <h2><a id="Work in Progress" class="anchor" href="#workinprogress" aria-hidden="true"><span class="octicon octicon-link"></span></a>Work in Progress</h2>
 
-    <p style="margin:0;" }><p > <a style="margin:0; font-size:100%; font-weight:bold" href=" https://TBA">The Macroeconomic Effects of Protectionist Industrial Policies </a> <br> <i> joint with <a href="https://sites.google.com/site/cacciatm/home?authuser=0">Matteo Cacciatore</a>, and <a href="https://www.bis.org/author/aaron_mehrotra.htm">Aaron Mehrotra </a>  </i>  <br> 
+    <p style="margin:0;"><p> <a style="margin:0; font-size:100%; font-weight:bold" href="https://TBA">The Macroeconomic Effects of Protectionist Industrial Policies</a> <br> <i> joint with <a href="https://sites.google.com/site/cacciatm/home?authuser=0">Matteo Cacciatore</a>, and <a href="https://www.bis.org/author/aaron_mehrotra.htm">Aaron Mehrotra</a></i></p>
 
-  
     <hr>
         
     <h2><a id="Discussions" class="anchor" href="#discussions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Discussions</h2>
 
-    <p style="margin:0;" }><p > <a style="margin:0; font-size:100%; font-weight:bold" href="https://econjosh.github.io/research/Discussion_GOP.pdf">Discussion of "Monetary Policy and Redistribution in Open Economies"</a><br> <i> by <a href="https://sites.google.com/umich.edu/xingguo/home">Xing Guo</a>, <a href="https://sites.google.com/site/ottonellopablo/home">Pablo Ottonello </a> and <a href="https://www.perezdiego.org/">Diego Perez</a>, NBP-Bank of Lithuania-CEBRA Conference: New Dimensions of Monetary Policy, National Bank of Poland, Warsaw, September 22-23, 2022 </i> <br>
-    </p> 
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;"> </div></p>
+    <p style="margin:0;"><p> <a style="margin:0; font-size:100%; font-weight:bold" href="https://econjosh.github.io/research/Discussion_GOP.pdf">Discussion of "Monetary Policy and Redistribution in Open Economies"</a><br> <i> by <a href="https://sites.google.com/umich.edu/xingguo/home">Xing Guo</a>, <a href="https://sites.google.com/site/ottonellopablo/home">Pablo Ottonello</a> and <a href="https://www.perezdiego.org/">Diego Perez</a>, NBP-Bank of Lithuania-CEBRA Conference: New Dimensions of Monetary Policy, National Bank of Poland, Warsaw, September 22-23, 2022</i></p>
 
-    <p style="margin:0;" }><p > <a style="margin:0; font-size:100%; font-weight:bold" href="https://econjosh.github.io/research/Discussion_HPP.pdf">Discussion of "Optimal Monetary Policy, Tariff Shocks and Exporter Dynamics"</a><br> <i> by <a href="https://sites.google.com/site/francescopappada/Home?authuser=0">Francesco Pappada </a>, <a href="https://masashige-hamano.webnode.jp/">Masashige Hamano </a> and <a href="https://sites.google.com/site/mariateresapunzi/">Maria Teresa Punzi </a>, 1st Baltic Central Banks Invited Lecture Series and Conference, Bank of Lithuania, Vilnius, May 17-19, 2023 </i><br> 
-    </p> 
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;"> </div></p>
+    <p style="margin:0;"><p> <a style="margin:0; font-size:100%; font-weight:bold" href="https://econjosh.github.io/research/Discussion_HPP.pdf">Discussion of "Optimal Monetary Policy, Tariff Shocks and Exporter Dynamics"</a><br> <i> by <a href="https://sites.google.com/site/francescopappada/Home?authuser=0">Francesco Pappada</a>, <a href="https://masashige-hamano.webnode.jp/">Masashige Hamano</a> and <a href="https://sites.google.com/site/mariateresapunzi/">Maria Teresa Punzi</a>, 1st Baltic Central Banks Invited Lecture Series and Conference, Bank of Lithuania, Vilnius, May 17-19, 2023</i></p>
 
-    <p style="margin:0;" }><p > <a style="margin:0; font-size:100%; font-weight:bold" href="https://econjosh.github.io/research/Discussion_ARC.pdf">Discussion of "Inputs in Distress: Geoeconomic Fragmentation and Firms' Sourcing"</a><br> <i> by <a href="https://www.nbb.be/en/authors/g-cariola">G. Cariola</a>, <a href="https://sites.google.com/site/ludovicpanon/home?authuser=0">L. Panon </a>, <a href="https://www.tradeconomics.com/borin/">A. Borin</a>,  <a href="https://sites.google.com/site/dennisessers/research?authuser=0">D. Essers</a>,  <a href="https://tulliapadellini.github.io/">T. Padellini</a>,  <a href="https://www.ecb.europa.eu/pub/research/authors/profiles/laura-lebastard.en.html">L. Lebastard</a>,  <a href="https://www.nbb.be/nl/authors/p-caka">P. Caka</a>, <a >E. Gentili</a>,  <a href="https://www.ecb.europa.eu/pub/research/authors/profiles/francisco-requena.en.html">F. Requena</a>,  <a href="https://tradeconomics.com/mancini/">M. Mancini</a>, <a href="https://sites.google.com/site/andrealinarello/home">A. Linarello</a>, and <a href="https://sites.google.com/view/jacopotimini/home?authuser=0">J. Timini</a>, 9th NBU-NBP Annual Research Conferece: Economic and Financial Integration in a Story and Fragmenting World, June 19-20, 2025 </i> <br>
-    </p> 
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;"> </div></p>
+    <p style="margin:0;"><p> <a style="margin:0; font-size:100%; font-weight:bold" href="https://econjosh.github.io/research/Discussion_ARC.pdf">Discussion of "Inputs in Distress: Geoeconomic Fragmentation and Firms' Sourcing"</a><br> <i> by <a href="https://www.nbb.be/en/authors/g-cariola">G. Cariola</a>, <a href="https://sites.google.com/site/ludovicpanon/home?authuser=0">L. Panon</a>, <a href="https://www.tradeconomics.com/borin/">A. Borin</a>, <a href="https://sites.google.com/site/dennisessers/research?authuser=0">D. Essers</a>, <a href="https://tulliapadellini.github.io/">T. Padellini</a>, <a href="https://www.ecb.europa.eu/pub/research/authors/profiles/laura-lebastard.en.html">L. Lebastard</a>, <a href="https://www.nbb.be/nl/authors/p-caka">P. Caka</a>, E. Gentili, <a href="https://www.ecb.europa.eu/pub/research/authors/profiles/francisco-requena.en.html">F. Requena</a>, <a href="https://tradeconomics.com/mancini/">M. Mancini</a>, <a href="https://sites.google.com/site/andrealinarello/home">A. Linarello</a>, and <a href="https://sites.google.com/view/jacopotimini/home?authuser=0">J. Timini</a>, 9th NBU-NBP Annual Research Conference: Economic and Financial Integration in a Story and Fragmenting World, June 19-20, 2025</i></p>
 
-   <p style="margin:0;" }><p > <a style="margin:0; font-size:100%; font-weight:bold" href="https://econjosh.github.io/research/Discussion_BEC.pdf">Discussion of "Debt Without Investment"</a><br> <i> by <a href="https://sites.google.com/view/martaguasch-rusinol/">Marta Guasch-Rusinol </a>, 7th Baltic Economic Conference, ISM, Vilnius, June 26-27, 2025 </i><br> 
-    </p> 
-    <div class="panel" style="background-color: #F1F1F1; color: #666; padding: 10px;"> </div></p>
-        
+    <p style="margin:0;"><p> <a style="margin:0; font-size:100%; font-weight:bold" href="https://econjosh.github.io/research/Discussion_BEC.pdf">Discussion of "Debt Without Investment"</a><br> <i> by <a href="https://sites.google.com/view/martaguasch-rusinol/">Marta Guasch-Rusinol</a>, 7th Baltic Economic Conference, ISM, Vilnius, June 26-27, 2025</i></p>
+
       </section>
       <footer>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
-    <script> 
-    var acc = document.getElementsByClassName("accordion");
-    var i;
 
-    for (i = 0; i < acc.length; i++) {
-        acc[i].onclick = function(){
-            this.classList.toggle("active");
-            this.parentNode.nextElementSibling.classList.toggle("show");
+    <script src="javascripts/scale.fix.js"></script>
+    <script>
+      // Accordion
+      var acc = document.getElementsByClassName("accordion");
+      for (var i = 0; i < acc.length; i++) {
+        acc[i].onclick = function() {
+          this.classList.toggle("active");
+          this.parentNode.nextElementSibling.classList.toggle("show");
+        }
       }
-    }
+
+      // Dark mode
+      const toggle = document.getElementById('darkModeToggle');
+      const label  = document.getElementById('toggleLabel');
+
+      if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+        toggle.checked = true;
+        label.textContent = 'Dark';
+      }
+
+      toggle.addEventListener('change', function () {
+        if (this.checked) {
+          document.body.classList.add('dark-mode');
+          label.textContent = 'Dark';
+          localStorage.setItem('darkMode', 'true');
+        } else {
+          document.body.classList.remove('dark-mode');
+          label.textContent = 'Light';
+          localStorage.setItem('darkMode', 'false');
+        }
+      });
     </script>
   </body>
 </html>
