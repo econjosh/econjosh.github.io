@@ -18,112 +18,236 @@
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
       ga('create', 'UA-29643011-3', 'auto');
       ga('send', 'pageview');
     </script>
 
-    <!-- For all browsers -->
     <link rel="stylesheet" href="assets/css/academicons.min.css"/>
     <link rel="stylesheet" href="assets/css/academicons.css"/>
-    
+
+    <style>
+      /* ── Dark mode CSS variables ── */
+      body.dark-mode {
+        background-color: #1a1a2e !important;
+        color: #e0e0e0 !important;
+      }
+      body.dark-mode .wrapper header {
+        background-color: #16213e !important;
+        border-color: #2a2a4a !important;
+        color: #e0e0e0 !important;
+      }
+      body.dark-mode .wrapper header h1,
+      body.dark-mode .wrapper header h3,
+      body.dark-mode .wrapper header p {
+        color: #e0e0e0 !important;
+      }
+      body.dark-mode .wrapper header a {
+        color: #7eb8f7 !important;
+      }
+      body.dark-mode .wrapper header a:hover {
+        color: #aad4ff !important;
+      }
+      body.dark-mode .wrapper section {
+        background-color: #1a1a2e !important;
+        color: #e0e0e0 !important;
+        border-color: #2a2a4a !important;
+      }
+      body.dark-mode .wrapper section a {
+        color: #7eb8f7 !important;
+      }
+      body.dark-mode .wrapper section h2,
+      body.dark-mode .wrapper section h3,
+      body.dark-mode .wrapper section h4 {
+        color: #e0e0e0 !important;
+      }
+      body.dark-mode .wrapper footer {
+        background-color: #16213e !important;
+        border-color: #2a2a4a !important;
+        color: #999 !important;
+      }
+      body.dark-mode .wrapper footer a {
+        color: #7eb8f7 !important;
+      }
+
+      /* ── Toggle switch ── */
+      .dark-mode-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 12px 0 4px 0;
+        font-size: 13px;
+        color: inherit;
+      }
+      .toggle-label {
+        font-size: 13px;
+        user-select: none;
+        color: inherit;
+      }
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 42px;
+        height: 22px;
+        flex-shrink: 0;
+      }
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background-color: #ccc;
+        border-radius: 22px;
+        transition: background-color 0.3s;
+      }
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 16px;
+        width: 16px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        border-radius: 50%;
+        transition: transform 0.3s;
+      }
+      input:checked + .slider {
+        background-color: #3a6fbf;
+      }
+      input:checked + .slider:before {
+        transform: translateX(20px);
+      }
+      .toggle-icon {
+        font-size: 14px;
+      }
+    </style>
   </head>
   <body>
     <div class="wrapper">
       <header>
         <h1>Ziran (Josh) Ding</h1>
-               <p><a href="https://www.st-andrews.ac.uk/business-school/"> Lecturer/Assistant Professor <br> Department of Economics <br> University of St Andrews Business School</p>
-       <h3><p class="view"><a href="https://econjosh.github.io/">Home</a></p></h3>
-       <h3><p class="view"><a href="https://econjosh.github.io/research.html">Research</a></p></h3>
-       <h3><p class="view"><a href="https://econjosh.github.io/teaching.html">Teaching</a></p></h3> 
-       <h3><p class="view"><a href="https://econjosh.github.io/research/cv_short.pdf">CV</a></p></h3>  
-    <p class="view"><b>Social</b><br>
-        <a href="mailto:josh.ding@st-andrews.ac.uk" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i> Email</a><br>
-        <a href="http://twitter.com/econjosh" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a><br>
- 
-    <p><b>Contact:</b><br>University of St Andrews Business School<br>The Gateway, North Haugh<br>St Andrews, KY16 9RJ</p>
+        <p><a href="https://www.st-andrews.ac.uk/business-school/">Lecturer/Assistant Professor <br> Department of Economics <br> University of St Andrews Business School</a></p>
+        <h3><p class="view"><a href="https://econjosh.github.io/">Home</a></p></h3>
+        <h3><p class="view"><a href="https://econjosh.github.io/research.html">Research</a></p></h3>
+        <h3><p class="view"><a href="https://econjosh.github.io/teaching.html">Teaching</a></p></h3>
+        <h3><p class="view"><a href="https://econjosh.github.io/research/cv_short.pdf">CV</a></p></h3>
+        <p class="view"><b>Social</b><br>
+          <a href="mailto:josh.ding@st-andrews.ac.uk" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i> Email</a><br>
+          <a href="http://twitter.com/econjosh" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a><br>
+        </p>
+        <p><b>Contact:</b><br>University of St Andrews Business School<br>The Gateway, North Haugh<br>St Andrews, KY16 9RJ</p>
+
+        <!-- Dark mode toggle -->
+        <div class="dark-mode-toggle">
+          <span class="toggle-icon">☀️</span>
+          <label class="switch" title="Toggle dark mode">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider"></span>
+          </label>
+          <span class="toggle-icon">🌙</span>
+          <span class="toggle-label" id="toggleLabel">Light</span>
+        </div>
       </header>
+
       <section>
-      <!-- <h2>Teaching Statement</h2> -->
-      <!-- <p><a href="https://tyleransom.github.io/teaching/Teaching-Statement.pdf">Download (PDF)</a><br></p> -->
-      
       <h2>Teaching Experience</h2>
      
       <hr/>
-      <h3>Instructor </h3>
-      <h4><b> EC4414 Macroeconomic Policy (University of St Andrews, Spring 2025)</b></h4>
-       Undergraduate module for Economics Honours 
+      <h3>Instructor</h3>
+      <h4><b>EC4414 Macroeconomic Policy (University of St Andrews, Spring 2025)</b></h4>
+      Undergraduate module for Economics Honours
       <ul>
-      <li><a href="https://econjosh.github.io/teaching/0.pdf">Syllabus</a></li>
+        <li><a href="https://econjosh.github.io/teaching/0.pdf">Syllabus</a></li>
       </ul>
-      <h4><b> EC5205 Macroeconomics (University of St Andrews, Autumn 2025)</b></h4>
-      Postgraduate module for MS in Economics 
+      <h4><b>EC5205 Macroeconomics (University of St Andrews, Autumn 2025)</b></h4>
+      Postgraduate module for MS in Economics
       <ul>
-      <li><a href="https://econjosh.github.io/teaching/0.pdf">Syllabus</a></li>
+        <li><a href="https://econjosh.github.io/teaching/0.pdf">Syllabus</a></li>
       </ul>
       <h4><b>Economics and Finance Ph.D. Math Camp (University of Washington, Summer 2015-2017)</b></h4>
       <ul>
-       <li><a href="https://econjosh.github.io/teaching/mathcamp_syllabus.pdf">Syllabus</a></li>
+        <li><a href="https://econjosh.github.io/teaching/mathcamp_syllabus.pdf">Syllabus</a></li>
       </ul>
       <h4><b>Econ 401: Advanced Macroeconomics (University of Washington, Winter, Spring 2018)</b></h4>
       Senior elective course introducing students to advanced macroeconomic theory.
       <ul>
-       <li><a href="https://econjosh.github.io/teaching/0.pdf">Syllabus</a></li>
+        <li><a href="https://econjosh.github.io/teaching/0.pdf">Syllabus</a></li>
       </ul>
       <h4><b>Econ 301: Intermediate Macroeconomics (University of Washington, Summer 2016, Autumn 2017)</b></h4>
       Undergraduate intermediate macroeconomics course
       <ul>
-       <li><a href="https://econjosh.github.io/teaching/301syllabus.pdf">Syllabus</a></li>
+        <li><a href="https://econjosh.github.io/teaching/301syllabus.pdf">Syllabus</a></li>
       </ul>
       <h4><b>Econ 201/2130: Introduction to Macroeconomics (University of Washington/Seattle University, Winter, Spring 2016/2019)</b></h4>
       Undergraduate introductory macroeconomics course
       <ul>
-       <li><a href="https://econjosh.github.io/teaching/2130syllabus.pdf">Syllabus</a></li>
+        <li><a href="https://econjosh.github.io/teaching/2130syllabus.pdf">Syllabus</a></li>
       </ul>
       <h4><b>Econ 2100: Introduction to Microeconomics (Seattle University, Autumn 2017, 2018)</b></h4>
-        Undergraduate introductory microeconomics course
+      Undergraduate introductory microeconomics course
       <ul>
-       <li><a href="https://econjosh.github.io/teaching/2110syllabus.pdf">Syllabus</a></li>
+        <li><a href="https://econjosh.github.io/teaching/2110syllabus.pdf">Syllabus</a></li>
       </ul>
       
       <hr />
-      <h3 style="margin-top:2px margin-bottom:6px">Teaching Assistant/Tutoring</h3>
-      --Graduate Level 
+      <h3 style="margin-top:2px; margin-bottom:6px">Teaching Assistant/Tutoring</h3>
+      --Graduate Level
       <ul>
         <li>Ph.D. Macroeconomics I, II, III, Autumn 2016-Spring 2017</li>
         <li>Fulltime MBA: Introduction to Business Economics, Autumn 2019</li>
-        <li>Hybrid MBA: Analysis of Global Economic Conditions, Witner 2019, 2020</li>
+        <li>Hybrid MBA: Analysis of Global Economic Conditions, Winter 2019, 2020</li>
         <li>Executive MBA: Strategic Competitive Analysis, Autumn 2018</li>
         <li>Fulltime MBA: Investments, Spring 2019</li>
       </ul>
         
-      --Undergraduate Level 
+      --Undergraduate Level
       <ul>
-        <li>Intermediate Macreconomics, Autumn 2025</li>
+        <li>Intermediate Macroeconomics, Autumn 2025</li>
         <li>Introductory Microeconomics, Autumn 2014-Spring 2015</li>
         <li>Elements of Statistical Methods (Department of Statistics), Spring 2020</li>
       </ul>
-       
 
- 
-      
       <hr />
-      <h3 style="margin-top:2px margin-bottom:6px">Awards and Recognitions</h3>
+      <h3 style="margin-top:2px; margin-bottom:6px">Awards and Recognitions</h3>
       -- University of Washington
       <ul>
-        <li><a href="https://www.washington.edu/teaching/programs/teaching-awards/award-descriptions/"> Excellence in Teaching Award Nominee </a> (2018)</li>
+        <li><a href="https://www.washington.edu/teaching/programs/teaching-awards/award-descriptions/">Excellence in Teaching Award Nominee</a> (2018)</li>
         <li>Graduate Teaching Award for Best TA in PhD Class, Department of Economics (2017)</li>
-        <li>Dean’s Letter for Outstanding Teaching, College of Arts and Sciences (2016)</li>        
-        <li>Steven Langton Award for Undergraduate Teaching, Department of Economics (2015)</li>        
+        <li>Dean's Letter for Outstanding Teaching, College of Arts and Sciences (2016)</li>
+        <li>Steven Langton Award for Undergraduate Teaching, Department of Economics (2015)</li>
       </ul>
 
-      
-   
       </section>
       <footer>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
+
     <script src="javascripts/scale.fix.js"></script>
+    <script>
+      const toggle = document.getElementById('darkModeToggle');
+      const label  = document.getElementById('toggleLabel');
+
+      if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+        toggle.checked = true;
+        label.textContent = 'Dark';
+      }
+
+      toggle.addEventListener('change', function () {
+        if (this.checked) {
+          document.body.classList.add('dark-mode');
+          label.textContent = 'Dark';
+          localStorage.setItem('darkMode', 'true');
+        } else {
+          document.body.classList.remove('dark-mode');
+          label.textContent = 'Light';
+          localStorage.setItem('darkMode', 'false');
+        }
+      });
+    </script>
   </body>
 </html>
