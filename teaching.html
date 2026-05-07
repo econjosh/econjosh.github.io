@@ -25,8 +25,36 @@
     <link rel="stylesheet" href="assets/css/academicons.min.css"/>
     <link rel="stylesheet" href="assets/css/academicons.css"/>
 
+    <!-- Apply saved theme as early as possible to avoid a flash of the wrong mode -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('darkMode');
+          var prefersDark = window.matchMedia &&
+                            window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (saved === 'true' || (saved === null && prefersDark)) {
+            document.documentElement.classList.add('dark-mode-pre');
+          }
+        } catch (e) {}
+      })();
+    </script>
+
     <style>
-      /* ── Dark mode CSS variables ── */
+      /* ── Smooth transitions everywhere ── */
+      body,
+      .wrapper header,
+      .wrapper section,
+      .wrapper footer,
+      .wrapper header a,
+      .wrapper section a,
+      .wrapper footer a {
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+      }
+
+      /* ── Pre-class hides flash before JS attaches the real class ── */
+      html.dark-mode-pre body { background-color: #1a1a2e; color: #e0e0e0; }
+
+      /* ── Dark mode color rules ── */
       body.dark-mode {
         background-color: #1a1a2e !important;
         color: #e0e0e0 !important;
@@ -69,63 +97,92 @@
         color: #7eb8f7 !important;
       }
 
-      /* ── Toggle switch ── */
-      .dark-mode-toggle {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin: 12px 0 4px 0;
-        font-size: 13px;
-        color: inherit;
-      }
-      .toggle-label {
-        font-size: 13px;
-        user-select: none;
-        color: inherit;
-      }
-      .switch {
-        position: relative;
-        display: inline-block;
-        width: 42px;
-        height: 22px;
-        flex-shrink: 0;
-      }
-      .switch input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-      }
-      .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background-color: #ccc;
-        border-radius: 22px;
-        transition: background-color 0.3s;
-      }
-      .slider:before {
-        position: absolute;
-        content: "";
-        height: 16px;
-        width: 16px;
-        left: 3px;
-        bottom: 3px;
-        background-color: white;
+      /* ──────────────────────────────────────────────────────────
+         Icon-only theme toggle button
+         Fixed top-right; circular; swaps sun ↔ moon on click.
+         ────────────────────────────────────────────────────────── */
+      .theme-toggle {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        z-index: 9999;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
-        transition: transform 0.3s;
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        background-color: #ffffff;
+        color: #444;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        transition: background-color 0.3s ease,
+                    color 0.3s ease,
+                    border-color 0.3s ease,
+                    transform 0.2s ease,
+                    box-shadow 0.2s ease;
       }
-      input:checked + .slider {
-        background-color: #3a6fbf;
+
+      .theme-toggle:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
       }
-      input:checked + .slider:before {
-        transform: translateX(20px);
+
+      .theme-toggle:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(58, 111, 191, 0.35);
       }
-      .toggle-icon {
-        font-size: 14px;
+
+      .theme-toggle:active {
+        transform: translateY(0);
+      }
+
+      body.dark-mode .theme-toggle {
+        background-color: #16213e;
+        color: #f5d76e;
+        border-color: rgba(255, 255, 255, 0.18);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+      }
+
+      .theme-toggle .icon {
+        font-size: 18px;
+        line-height: 1;
+        display: inline-block;
+        transition: transform 0.4s ease, opacity 0.2s ease;
+      }
+      .theme-toggle .icon-moon { display: none; }
+      body.dark-mode .theme-toggle .icon-sun  { display: none; }
+      body.dark-mode .theme-toggle .icon-moon { display: inline-block; }
+
+      .theme-toggle:hover .icon {
+        transform: rotate(20deg);
+      }
+
+      @media (max-width: 480px) {
+        .theme-toggle {
+          top: 10px;
+          right: 10px;
+          width: 36px;
+          height: 36px;
+        }
+        .theme-toggle .icon { font-size: 16px; }
       }
     </style>
   </head>
   <body>
+    <!-- Floating theme toggle (icon only) -->
+    <button id="themeToggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Toggle dark mode"
+            aria-pressed="false"
+            title="Toggle dark mode">
+      <span class="icon icon-sun" aria-hidden="true">☀</span>
+      <span class="icon icon-moon" aria-hidden="true">☾</span>
+    </button>
+
     <div class="wrapper">
       <header>
         <h1>Ziran (Josh) Ding</h1>
@@ -139,17 +196,6 @@
           <a href="http://twitter.com/econjosh" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a><br>
         </p>
         <p><b>Contact:</b><br>University of St Andrews Business School<br>The Gateway, North Haugh<br>St Andrews, KY16 9RJ</p>
-
-        <!-- Dark mode toggle -->
-        <div class="dark-mode-toggle">
-          <span class="toggle-icon">☀️</span>
-          <label class="switch" title="Toggle dark mode">
-            <input type="checkbox" id="darkModeToggle">
-            <span class="slider"></span>
-          </label>
-          <span class="toggle-icon">🌙</span>
-          <span class="toggle-label" id="toggleLabel">Light</span>
-        </div>
       </header>
 
       <section>
@@ -228,26 +274,48 @@
 
     <script src="javascripts/scale.fix.js"></script>
     <script>
-      const toggle = document.getElementById('darkModeToggle');
-      const label  = document.getElementById('toggleLabel');
+      (function () {
+        var btn  = document.getElementById('themeToggle');
+        var body = document.body;
+        var html = document.documentElement;
 
-      if (localStorage.getItem('darkMode') === 'true') {
-        document.body.classList.add('dark-mode');
-        toggle.checked = true;
-        label.textContent = 'Dark';
-      }
-
-      toggle.addEventListener('change', function () {
-        if (this.checked) {
-          document.body.classList.add('dark-mode');
-          label.textContent = 'Dark';
-          localStorage.setItem('darkMode', 'true');
-        } else {
-          document.body.classList.remove('dark-mode');
-          label.textContent = 'Light';
-          localStorage.setItem('darkMode', 'false');
+        function applyTheme(isDark) {
+          if (isDark) {
+            body.classList.add('dark-mode');
+            btn.setAttribute('aria-pressed', 'true');
+            btn.setAttribute('aria-label', 'Switch to light mode');
+          } else {
+            body.classList.remove('dark-mode');
+            btn.setAttribute('aria-pressed', 'false');
+            btn.setAttribute('aria-label', 'Switch to dark mode');
+          }
+          html.classList.remove('dark-mode-pre');
         }
-      });
+
+        var saved = null;
+        try { saved = localStorage.getItem('darkMode'); } catch (e) {}
+        var prefersDark = window.matchMedia &&
+                          window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var startDark = saved === 'true' || (saved === null && prefersDark);
+        applyTheme(startDark);
+
+        btn.addEventListener('click', function () {
+          var nowDark = !body.classList.contains('dark-mode');
+          applyTheme(nowDark);
+          try { localStorage.setItem('darkMode', nowDark ? 'true' : 'false'); } catch (e) {}
+        });
+
+        if (window.matchMedia) {
+          var mq = window.matchMedia('(prefers-color-scheme: dark)');
+          var mqHandler = function (e) {
+            var stored = null;
+            try { stored = localStorage.getItem('darkMode'); } catch (err) {}
+            if (stored === null) applyTheme(e.matches);
+          };
+          if (mq.addEventListener)      mq.addEventListener('change', mqHandler);
+          else if (mq.addListener)      mq.addListener(mqHandler);
+        }
+      })();
     </script>
   </body>
 </html>
